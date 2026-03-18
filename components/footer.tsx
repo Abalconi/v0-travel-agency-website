@@ -4,14 +4,6 @@ import { MapPin, Phone, Mail, Plane } from "lucide-react"
 
 const WALINK = "https://walink.co/89b493"
 
-const destinations = [
-  { name: "Cartagena", href: "/destinos/cartagena" },
-  { name: "Medellín", href: "/destinos/medellin" },
-  { name: "Ciudad de México", href: "/destinos/ciudad-de-mexico" },
-  { name: "Punta Cana", href: "/destinos/punta-cana" },
-  { name: "Bahamas", href: "/destinos/bahamas" },
-  { name: "Río de Janeiro", href: "/destinos/rio-de-janeiro" },
-]
 
 const links = [
   { name: "Inicio", href: "/" },
@@ -29,11 +21,12 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo-final.png"
                 alt="Wanderlux Travel Agency"
                 width={80}
                 height={80}
-                className="h-20 w-auto"
+                className="h-20 w-auto object-contain"
+                style={{ mixBlendMode: 'multiply' }}
               />
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
@@ -46,31 +39,21 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+502 1234-5678</span>
+                <span>+502 3961-6185</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4" />
+                <span>+502 5109-0041</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>info@wanderlux.gt</span>
+                <span>reservas@wandergt.com</span>
               </div>
             </div>
           </div>
 
-          {/* Destinations */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Destinos</h3>
-            <ul className="mt-4 space-y-2">
-              {destinations.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Empty column to keep grid balance or other links */}
+          <div></div>
 
           {/* Links */}
           <div>
@@ -108,7 +91,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Wanderlux. Todos los derechos reservados.
+            © {new Date().getFullYear()} Tekylab. Todos los derechos reservados.
           </p>
         </div>
       </div>

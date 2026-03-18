@@ -61,7 +61,7 @@ export default async function DestinationPage({ params }: PageProps) {
       <section className="relative">
         <div className="relative h-64 lg:h-80">
           <Image
-            src={destination.image || "/placeholder.svg"}
+            src={destination.heroImage || destination.image || "/placeholder.svg"}
             alt={`Viajar a ${destination.name} desde Guatemala`}
             fill
             className="object-cover"

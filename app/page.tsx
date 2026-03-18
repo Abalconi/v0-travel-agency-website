@@ -1,185 +1,203 @@
-import Link from "next/link"
+"use client"
+
 import Image from "next/image"
-import { ArrowRight, Shield, Clock, HeadphonesIcon, DollarSign } from "lucide-react"
-import { DestinationCard } from "@/components/destination-card"
-import { WhatsAppCTA } from "@/components/whatsapp-cta"
-import { destinations } from "@/lib/destinations"
+import Link from "next/link"
+import { ArrowDown, MessageCircle, Star, Users, CheckCircle } from "lucide-react"
+import { Quiz } from "@/components/quiz/Quiz"
+import { trackEvent } from "@/services/tracking"
 
 const WALINK = "https://walink.co/89b493"
 
-const benefits = [
-  {
-    icon: Shield,
-    title: "Asesoría experta",
-    description: "Planificamos tu viaje considerando todos los detalles para que disfrutes sin preocupaciones.",
-  },
-  {
-    icon: Clock,
-    title: "Ahorra tiempo",
-    description: "Nos encargamos de la investigación, reservas y logística para que solo te preocupes por disfrutar.",
-  },
-  {
-    icon: DollarSign,
-    title: "Mejores precios",
-    description: "Accedemos a tarifas preferenciales con aerolíneas y hoteles que no encontrarás por tu cuenta.",
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "Apoyo 24/7",
-    description: "Ante cualquier imprevisto durante tu viaje, estamos disponibles para ayudarte.",
-  },
+const trustBadges = [
+  { icon: Star, text: "4.9 / 5 en reseñas" },
+  { icon: Users, text: "+500 viajeros asesorados" },
+  { icon: CheckCircle, text: "100% en WhatsApp" },
 ]
 
 export default function HomePage() {
+  const scrollToQuiz = () => {
+    document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center">
+      {/* ─── Hero ──────────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background image */}
         <Image
           src="/images/hero-bg.jpg"
-          alt="Playa tropical paradisíaca con palmeras y arena blanca en el Caribe"
+          alt="Destino de lujo en el Caribe"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-foreground/30" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-background lg:text-5xl text-balance">
-            Agencia de viajes en Guatemala especializada en viajes internacionales
-          </h1>
-          <p className="mt-6 text-lg text-background/90 leading-relaxed max-w-2xl mx-auto">
-            Wanderlux es una agencia de viajes en Guatemala especializada en viajes internacionales organizados, enfocada en optimizar rutas, costos y tiempos de viaje mediante asesoría personalizada.
-          </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/destinos"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              Ver destinos
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a
-              href={WALINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-background/30 bg-background/20 backdrop-blur-sm px-6 py-3 text-base font-medium text-background hover:bg-background/30 transition-colors"
-            >
-              Solicitar asesoría
-            </a>
-          </div>
-        </div>
-      </section>
+        {/* Gradient overlay — asymmetric navy wash */}
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-foreground/20" />
 
-      {/* Benefits Section */}
-      <section className="py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-foreground lg:text-3xl text-balance">
-              ¿Por qué viajar con una agencia?
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              Una agencia de viajes no solo reserva vuelos y hoteles. Te ofrece tranquilidad, ahorro y experiencia para que tu viaje sea memorable.
+        {/* Content — left-aligned for editorial feel */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-24 flex flex-col lg:flex-row items-center gap-16">
+          {/* Text block */}
+          <div className="flex-1 max-w-2xl">
+            {/* Eyebrow */}
+            {/* Headline */}
+            <h1
+              className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] text-balance opacity-0 animate-fade-up delay-100"
+              style={{ animationFillMode: "forwards" }}
+            >
+              Un viaje es la combinación perfecta de <em className="not-italic text-accent">muchos detalles</em>.
+            </h1>
+
+            {/* Subheadline */}
+            <p
+              className="mt-6 text-lg text-white/85 leading-relaxed max-w-xl opacity-0 animate-fade-up delay-200"
+              style={{ animationFillMode: "forwards" }}
+            >
+              Cuando todo encaja, la experiencia se vuelve inolvidable. En Wanderlux usamos tecnología y experiencia en viajes para diseñar itinerarios personalizados, pensados para ti.
             </p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="rounded-xl border border-border bg-card p-6 shadow-sm"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <benefit.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-card-foreground">
-                  {benefit.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Destinations Preview */}
-      <section className="bg-muted/30 py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground lg:text-3xl text-balance">
-                Destinos populares desde Guatemala
-              </h2>
-              <p className="mt-2 text-muted-foreground">
-                Guías completas con costos, requisitos y recomendaciones reales.
-              </p>
-            </div>
-            <Link
-              href="/destinos"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            {/* Trust badges */}
+            <div
+              className="mt-6 flex flex-wrap gap-3 opacity-0 animate-fade-up delay-300"
+              style={{ animationFillMode: "forwards" }}
             >
-              Ver todos los destinos
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {destinations.slice(0, 6).map((destination) => (
-              <DestinationCard
-                key={destination.slug}
-                name={destination.name}
-                slug={destination.slug}
-                country={destination.country}
-                priceRange={destination.priceRange}
-                image={destination.image}
-                description={destination.shortDescription}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+              {trustBadges.map(({ icon: Icon, text }) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-1.5 bg-accent/40 backdrop-blur-sm text-white font-semibold text-xs px-3 py-1.5 rounded-full border border-accent/20"
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  {text}
+                </div>
+              ))}
+            </div>
 
-      {/* Advisory Section */}
-      <section className="py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="rounded-2xl bg-secondary p-8 lg:p-12">
-            <div className="max-w-2xl">
-              <h2 className="text-2xl font-bold text-foreground lg:text-3xl text-balance">
-                Asesoría personalizada para tu viaje
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Cada viaje es diferente. Te ayudamos a planificar según tus preferencias, presupuesto y tiempos. No vendemos paquetes genéricos: diseñamos experiencias a tu medida.
-              </p>
-              <ul className="mt-6 space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">1</span>
-                  <span className="text-muted-foreground">Cuéntanos sobre tu viaje ideal y presupuesto</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">2</span>
-                  <span className="text-muted-foreground">Recibe opciones personalizadas con precios reales</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">3</span>
-                  <span className="text-muted-foreground">Reservamos y organizamos todo por ti</span>
-                </li>
-              </ul>
-              <div className="mt-8">
+            {/* CTA Buttons */}
+            <div
+              className="mt-8 flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-up delay-400"
+              style={{ animationFillMode: "forwards" }}
+            >
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href={WALINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                  id="hero-wa-btn"
+                  className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white font-semibold text-base px-8 py-4 rounded-xl hover:bg-white/25 transition-all duration-200"
                 >
-                  Solicitar asesoría por WhatsApp
+                  <MessageCircle className="w-4 h-4" />
+                  Hablar por WhatsApp
+                </a>
+                <a
+                  href={`${WALINK}?text=Hola!%20Estoy%20listo%20para%20COMPRAR%20mi%20viaje.%20Quiero%20asesoria%20inmediata.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="hero-buy-btn"
+                  onClick={() => trackEvent("whatsapp_clicked", { type: "direct_buy" })}
+                  className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-bold text-base px-12 py-4 rounded-xl shadow-lg hover:brightness-95 transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Comprar
                 </a>
               </div>
             </div>
           </div>
+
+          {/* Quiz Card — right side on desktop */}
+          <div
+            className="flex-1 w-full max-w-md opacity-0 animate-scale-in delay-300"
+            style={{ animationFillMode: "forwards" }}
+          >
+            <div className="bg-background/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden mx-auto">
+              <div className="bg-primary px-6 py-3">
+                <p className="text-primary-foreground font-semibold text-sm text-center tracking-wide">
+                  Tu quiz de viaje personalizado
+                </p>
+              </div>
+              <div className="p-4 md:p-6">
+                <Quiz />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-60 animate-bounce">
+          <ArrowDown className="w-5 h-5 text-white" />
         </div>
       </section>
 
-      {/* WhatsApp CTA */}
-      <WhatsAppCTA />
+
+      {/* ─── How it works ──────────────────────────────────────────────────────── */}
+      <section className="py-20 bg-secondary/50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground">
+              Cómo diseñamos tu experiencia
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Respondes el quiz",
+                desc: "5 preguntas rápidas sobre tu destino, presupuesto y preferencias.",
+              },
+              {
+                step: "02",
+                title: "Recibes tu recomendación",
+                desc: "Te mostramos el itinerario y destino que mejor se adapta a ti.",
+              },
+              {
+                step: "03",
+                title: "Conectamos por WhatsApp",
+                desc: "Un asesor real te contacta para cerrar los detalles y reservar.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="bg-card rounded-2xl p-6 border border-border shadow-sm text-center">
+                <div className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
+                  Paso {item.step}
+                </div>
+                <h3 className="font-serif font-semibold text-lg text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WhatsApp CTA Banner ───────────────────────────────────────────────── */}
+      <section className="py-16 bg-primary">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-xl font-serif font-semibold text-primary-foreground mb-2">
+            ¿Preguntas antes de comenzar?
+          </p>
+          <p className="text-primary-foreground/80 mb-6 text-sm">
+            Estamos disponibles todos los días por WhatsApp.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={WALINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="bottom-wa-btn"
+              className="btn-whatsapp inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-xl text-base shadow-xl"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Hablar con un asesor
+            </a>
+            <a
+              href={`${WALINK}?text=Hola!%20Estoy%20listo%20para%20COMPRAR%20mi%20viaje.%20Quiero%20asesoria%20inmediata.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="bottom-buy-btn"
+              onClick={() => trackEvent("whatsapp_clicked", { type: "direct_buy_footer" })}
+              className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-bold text-base px-10 py-4 rounded-xl shadow-lg hover:brightness-95 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              Comprar
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

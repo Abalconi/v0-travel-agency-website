@@ -1,82 +1,68 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Luxury Editorial Design System ─────────────────────────── */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.25 0.02 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.02 255);
+  /* Core: Warmer Luxury Neutral */
+  --background: oklch(0.985 0.005 85);
+  --foreground: oklch(0.18 0.03 255);
+  --card: oklch(0.99 0.002 85);
+  --card-foreground: oklch(0.18 0.03 255);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.02 255);
-  --primary: oklch(0.38 0.15 260);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0.005 90);
-  --secondary-foreground: oklch(0.25 0.02 255);
-  --muted: oklch(0.97 0.005 90);
-  --muted-foreground: oklch(0.55 0.02 255);
-  --accent: oklch(0.85 0.17 85);
-  --accent-foreground: oklch(0.25 0.02 255);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.005 90);
-  --input: oklch(0.92 0.005 90);
-  --ring: oklch(0.38 0.15 260);
-  --chart-1: oklch(0.38 0.15 260);
-  --chart-2: oklch(0.85 0.17 85);
-  --chart-3: oklch(0.55 0.02 255);
-  --chart-4: oklch(0.45 0.13 260);
-  --chart-5: oklch(0.75 0.15 85);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.25 0.02 255);
-  --sidebar-primary: oklch(0.38 0.15 260);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.97 0.005 90);
-  --sidebar-accent-foreground: oklch(0.25 0.02 255);
-  --sidebar-border: oklch(0.92 0.005 90);
-  --sidebar-ring: oklch(0.38 0.15 260);
-}
+  --popover-foreground: oklch(0.18 0.03 255);
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* Brand: Deep Navy */
+  --primary: oklch(0.30 0.14 255);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Neutral warm */
+  --secondary: oklch(0.96 0.01 85);
+  --secondary-foreground: oklch(0.18 0.03 255);
+  --muted: oklch(0.96 0.01 85);
+  --muted-foreground: oklch(0.45 0.02 255);
+
+  /* Gold accent */
+  --accent: oklch(0.80 0.13 75);
+  --accent-foreground: oklch(0.18 0.03 255);
+
+  --destructive: oklch(0.55 0.24 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.90 0.008 80);
+  --input: oklch(0.90 0.008 80);
+  --ring: oklch(0.30 0.14 255);
+
+  /* Charts */
+  --chart-1: oklch(0.30 0.14 255);
+  --chart-2: oklch(0.80 0.13 75);
+  --chart-3: oklch(0.52 0.025 255);
+  --chart-4: oklch(0.45 0.12 255);
+  --chart-5: oklch(0.70 0.12 75);
+
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.003 75);
+  --sidebar-foreground: oklch(0.18 0.03 255);
+  --sidebar-primary: oklch(0.30 0.14 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.008 80);
+  --sidebar-accent-foreground: oklch(0.18 0.03 255);
+  --sidebar-border: oklch(0.90 0.008 80);
+  --sidebar-ring: oklch(0.30 0.14 255);
+
+  /* WA green */
+  --wa-green: #25D366;
+  --wa-green-dark: #128C7E;
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -118,8 +104,118 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Outfit', system-ui, sans-serif;
   }
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* ─── Animations ───────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-up   { animation: fadeUp 0.6s ease forwards; }
+.animate-fade-in   { animation: fadeIn 0.5s ease forwards; }
+.animate-slide-right { animation: slideRight 0.5s ease forwards; }
+.animate-slide-left  { animation: slideLeft 0.5s ease forwards; }
+.animate-scale-in  { animation: scaleIn 0.4s ease forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ─── Quiz Step Transitions ────────────────────────────────────── */
+.quiz-enter {
+  animation: slideLeft 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.quiz-exit {
+  animation: fadeIn 0.2s ease reverse forwards;
+}
+
+/* ─── Progress bar ─────────────────────────────────────────────── */
+.progress-bar-fill {
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── WhatsApp button ──────────────────────────────────────────── */
+.btn-whatsapp {
+  background: var(--wa-green);
+  color: white;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-whatsapp:hover {
+  background: var(--wa-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+/* ─── Option Cards (Quiz) ──────────────────────────────────────── */
+.option-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid var(--border);
+}
+.option-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.option-card.selected {
+  border-color: var(--primary);
+  background: oklch(0.97 0.02 255);
+}
+
+/* ─── Gradient overlays ────────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(
+    160deg,
+    oklch(0.18 0.05 260 / 0.75) 0%,
+    oklch(0.18 0.04 260 / 0.35) 60%,
+    transparent 100%
+  );
+}
+
+.logo-white {
+  filter: brightness(0) invert(1);
 }

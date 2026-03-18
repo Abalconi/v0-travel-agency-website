@@ -10,7 +10,6 @@ const WALINK = "https://walink.co/89b493"
 
 const navigation = [
   { name: "Inicio", href: "/" },
-  { name: "Destinos", href: "/destinos" },
   { name: "Viajar desde Guatemala", href: "/viajar-desde-guatemala" },
   { name: "Preguntas Frecuentes", href: "/preguntas-frecuentes" },
 ]
@@ -23,11 +22,12 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo.jpeg"
+            src="/images/logo-final.png"
             alt="Wanderlux Travel Agency"
             width={48}
             height={48}
-            className="h-12 w-auto"
+            className="h-12 w-auto object-contain transition-transform hover:scale-105"
+            style={{ mixBlendMode: 'multiply' }}
           />
         </Link>
 

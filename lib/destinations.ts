@@ -4,6 +4,7 @@ export interface Destination {
   country: string
   priceRange: string
   image: string
+  heroImage?: string
   shortDescription: string
   directAnswer: string
   visaRequired: boolean
@@ -22,10 +23,11 @@ export const destinations: Destination[] = [
     name: "Cartagena",
     slug: "cartagena",
     country: "Colombia",
-    priceRange: "USD 750 - 1,400",
+    priceRange: "Q. 6,500 - Q. 9,800",
     image: "/images/cartagena.jpg",
+    heroImage: "/images/cartagena_hero.png",
     shortDescription: "Ciudad histórica con playas del Caribe, arquitectura colonial y una vibrante vida cultural.",
-    directAnswer: "Viajar a Cartagena desde Guatemala cuesta en promedio entre USD 750 y USD 1,400, dependiendo de la temporada, duración del viaje y tipo de hotel.",
+    directAnswer: "Viajar a Cartagena desde Guatemala cuesta en promedio entre Q. 6,500 y Q. 9,800, dependiendo de la temporada, duración del viaje y tipo de hotel.",
     visaRequired: false,
     visaInfo: "Los ciudadanos guatemaltecos no necesitan visa para ingresar a Colombia por turismo.",
     bestSeason: "Enero a marzo ofrece clima seco y alta demanda. Septiembre tiene precios más bajos.",
@@ -34,6 +36,7 @@ export const destinations: Destination[] = [
       "Vuelo ida y vuelta",
       "Hotel en zona histórica o Bocagrande",
       "Traslados aeropuerto – hotel",
+      "Tours y actividades",
       "Asesoría personalizada",
       "Seguro de viaje disponible como opcional"
     ],
@@ -64,10 +67,11 @@ export const destinations: Destination[] = [
     name: "Medellín",
     slug: "medellin",
     country: "Colombia",
-    priceRange: "USD 700 - 1,300",
-    image: "/images/medellin.jpg",
+    priceRange: "Q. 6,100 - Q. 8,500",
+    image: "/images/medellin_card.jpg",
+    heroImage: "/images/medellin_hero.png",
     shortDescription: "La ciudad de la eterna primavera, conocida por su clima perfecto e innovación urbana.",
-    directAnswer: "Viajar a Medellín desde Guatemala cuesta en promedio entre USD 700 y USD 1,300, dependiendo de la temporada, duración del viaje y tipo de hotel.",
+    directAnswer: "Viajar a Medellín desde Guatemala cuesta en promedio entre Q. 6,100 y Q. 8,500, dependiendo de la temporada, duración del viaje y tipo de hotel.",
     visaRequired: false,
     visaInfo: "Los ciudadanos guatemaltecos no necesitan visa para ingresar a Colombia por turismo.",
     bestSeason: "Todo el año gracias a su clima primaveral constante. Diciembre y enero tienen más eventos.",
@@ -76,6 +80,7 @@ export const destinations: Destination[] = [
       "Vuelo ida y vuelta",
       "Hotel en El Poblado o Laureles",
       "Traslados aeropuerto – hotel",
+      "Tours y actividades",
       "Asesoría personalizada",
       "Seguro de viaje disponible como opcional"
     ],
